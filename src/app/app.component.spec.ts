@@ -3,9 +3,13 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms'; //needed for ngModel
 import { Todo } from './todo';
 
+/*Also specify FormsModule in imports property of Testbed config object*/
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        FormsModule
+      ],
       declarations: [
         AppComponent
       ],
