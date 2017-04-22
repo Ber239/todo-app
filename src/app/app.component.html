@@ -1,3 +1,57 @@
-<h1>
-  {{title}}
-</h1>
+<!--
+Short Primer on Angular's Template Syntax
+[property]="expression" : set property of an element to the value of expression
+(event)="statement" : execute statement when event occurred
+[(property)]="expression" : create two-way binding with expression
+[class.special]="expression" : add special CSS class to element when the value of expression is truthy
+[style.color]="expression" : set color CSS property to the value of expression
+-->
+
+<!--The expression context of a component is the component instance.
+And the component instance is an instance of the component class.
+Component class of our AppComponent is defined in app.component.ts-->
+
+
+<section class="todoapp">
+  <header class="header">
+    <h1>Todos</h1>
+    <!--[(ngModel)]="newTodo.title" : Adds a two-way binding between the 
+      input value and newTodo.title-->
+    <!--(keyup.enter)="addTodo()" : Tells angular to execute addTodo()
+      when the enter key was pressed while typing in the input element-->
+    <input class="new-todo" placeholder="What needs to be done?" autofocus=""
+      [(ngModel)]="newTodo.title" 
+      (keyup.enter)="addTodo()">
+  </header>
+
+  <!--Main section will only show all its children when there is at least
+    one to do.-->
+  <section class="main" *ngIf="todos.length > 0">
+    <ul class="todo-list">
+      <!--Generate an li element for each to do-->
+      <!--Loop over all todo's and assign current todo to a variable
+        called todo for each iteration-->
+      <!--Apply CSS class completed to li element when todo.complete
+        is truty-->
+      <li *ngFor="let todo of todos" [class.completed]="todo.complete">
+        <div class="view">
+          <!--Execute toggleTodoComplete(todo) when checkbox is clicked-->
+          <!--Assign the value of todo.complete to the property checked
+            of the element-->
+          <input class="toggle" type="checkbox" 
+            (click)="toggleTodoComplete(todo)" 
+            [checked]="todo.complete">
+          <label>{{todo.title}}</label>
+          <!--Execute removeTodo(todo) when the destroy button is clicked-->
+          <button class="destroy" (click)="removeTodo(todo)"></button>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <footer class="footer" *ngIf="todos.length > 0">
+    <span class="todo-count">
+      <strong>{{todos.length}}</strong> 
+      {{todos.length == 1 ? 'item' : 'items'}} left
+    </span>
+  </footer>
+</section>
