@@ -1,0 +1,9 @@
+<div class="container">
+  <label>
+    <input class="toggle" type="checkbox" 
+      (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
+    {{todo.title}} 
+    <button type="button" class="destroy btn btn-danger btn-xs" 
+      (click)="removeTodo(todo)">Delete</button>
+  </label>
+</div>

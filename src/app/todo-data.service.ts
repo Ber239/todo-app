@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Todo } from './todo'; //Make sure to import the Todo object
-
+import { AppComponent } from './app.component';
+;
 //TodoDataService will be responsible for managing our Todo items
 //Generated with 'ng g s TodoData'
 // We are centralizing the business logic in a service
@@ -104,7 +105,7 @@ export class TodoDataService {
     as well as any object values. In this case the todo's complete property
     was initially initialized to FALSE when it was created. But now we are
     negating it and saying that it is now TRUE (aka complete value is TRUE). */
-    let updatedTodo = this.updateTodoById(todo.id, { complete: !todo.complete});
+    let updatedTodo = this.updateTodoById(todo.id, {complete: !todo.complete});
     return updatedTodo;
   }
 

@@ -1,0 +1,8 @@
+<header class="jumbotron text-center">
+  <h1>Todos</h1>
+  <!--[(ngModel)]="newTodo.title" : Adds a two-way binding between the 
+input value and newTodo.title-->
+  <!--(keyup.enter)="addTodo()" : Tells angular to execute addTodo()
+when the enter key was pressed while typing in the input element-->
+  <input class="new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTodo.title" (keyup.enter)="addTodo()">
+</header>

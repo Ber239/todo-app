@@ -1,0 +1,31 @@
+<!--ORIGINAL
+<section class="main" *ngIf="todos.length > 0">
+  <ul class="todo-list">
+    <li *ngFor="let todo of todos" [class.completed]="todo.complete">
+      <div class="view">
+        <input class="toggle" type="checkbox" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
+        <label>{{todo.title}}</label>
+        <label>{{todo.complete}}</label>
+        <button class="destroy" (click)="removeTodo(todo)"></button>
+      </div>
+    </li>
+  </ul>
+</section>-->
+
+<section class="main" *ngIf="todos.length > 0">
+  <ul class="todo-list list-group">
+    <!--Apply CSS class completed to li element when todo.complete
+        is truthy-->
+    <li class="list-group-item" *ngFor="let todo of todos" [class.completed]="todo.complete">
+      <!--Execute onToggleTodoComplete($event) when checkbox is clicked-->
+      <!--Assign the value of todo.complete to the property checked
+        of the element-->
+      <!--Execute onRemoveTodo($event) when the destroy button is clicked-->
+      <app-todo-list-item
+        [todo]="todo"
+        (toggleComplete)="onToggleTodoComplete($event)"
+        (remove)="onRemoveTodo($event)">
+      </app-todo-list-item>
+    </li>
+  </ul>
+</section>
