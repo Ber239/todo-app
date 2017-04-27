@@ -13,7 +13,16 @@ import { TodoDataService } from './todo-data.service';
 
 import { AlertModule } from 'ngx-bootstrap';
 
+/*NgModules help organize an application into cohesive blocks of functionality.
+A class that is adorned with the @NgModule decorator function. It takes a
+metadata object that tells Angular how to compile and run module code. It
+identifies the module's own components, directives, and pipes, making some of them
+public so external components can use them.
+
+@NgModule may hadd service providers to the application dependency injections.*/
 @NgModule({
+  //Generally the declarations array contains a list of application components,
+  //pipes, and directives
   declarations: [
     AppComponent,
     //Auto added by CLI
