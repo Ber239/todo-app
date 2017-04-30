@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../todo';
+import { RestServiceCallService } from '../rest-service-call.service';
+
 @Component({
   selector: 'app-todo-list-header',
   templateUrl: './todo-list-header.component.html',
@@ -16,7 +18,8 @@ export class TodoListHeaderComponent implements OnInit {
   @Output()
   add: EventEmitter<Todo> = new EventEmitter();
 
-  constructor() { }
+  constructor(private restServiceCallService: RestServiceCallService) { }
+  profile = {};
 
   ngOnInit() {
   }
@@ -28,6 +31,10 @@ export class TodoListHeaderComponent implements OnInit {
     be called and $event will be equal to value.*/
     this.add.emit(this.newTodo);
     this.newTodo = new Todo();
+  }
+
+  loadUser() {
+    this.restServiceCallService.getUser().subscribe(data => this.profile = data);
   }
 
 }

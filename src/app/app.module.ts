@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+
 import { AppComponent } from './app.component';
 /*Auto added by Angular CLI when I did ng g c...*/
 import { TodoListHeaderComponent } from './todo-list-header/todo-list-header.component';
@@ -10,8 +11,10 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoListItemComponent } from './todo-list-item/todo-list-item.component';
 import { TodoListFooterComponent } from './todo-list-footer/todo-list-footer.component';
 import { TodoDataService } from './todo-data.service';
-
-import { AlertModule } from 'ngx-bootstrap';
+import { Observable } from 'rxjs/Observable';
+//import { AlertModule } from 'ngx-bootstrap';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { RestServiceCallService } from './rest-service-call.service';
 
 /*NgModules help organize an application into cohesive blocks of functionality.
 A class that is adorned with the @NgModule decorator function. It takes a
@@ -31,15 +34,16 @@ public so external components can use them.
     TodoListHeaderComponent,
     TodoListComponent,
     TodoListItemComponent,
-    TodoListFooterComponent
+    TodoListFooterComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
-    AlertModule.forRoot()
+    //AlertModule.forRoot(),
+    HttpModule
   ],
-  providers: [TodoDataService],
+  providers: [TodoDataService,RestServiceCallService,HttpModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
